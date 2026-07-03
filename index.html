@@ -47,11 +47,17 @@
       "description": "柏の葉スマートシティの住民ガイド。パナソニック コネクトの公式エバンジェリストとして顔認証・センシング・スマートシティ領域の情報発信を担当。デザイン思考とAIを活用したワークショップで、視察から得た気づきをアイデアに変える支援を行う。",
       "email": "furuta.ideas@gmail.com",
       "sameAs": [
-        "https://connect.panasonic.com/jp-ja/about/who-we-are/experience/evangelist",
+        "https://connect.panasonic.com/jp-ja/about/who-we-are/experience/evangelist#furuta",
         "https://connect.panasonic.com/jp-ja/gemba/article/sensing-evangelist-furuta",
         "https://connect.panasonic.com/jp-ja/about/who-we-are/experience/evangelist/seminar211015",
         "https://www.pc-webzine.com/article/630",
-        "https://news.panasonic.com/jp/press/jn210428-1"
+        "https://news.panasonic.com/jp/press/jn210428-1",
+        "https://www.nikkei.com/article/DGXZQOUF026H00S3A300C2000000/",
+        "https://japan.zdnet.com/article/35206075/",
+        "https://www.dnp.co.jp/biz/column/detail/20173467_4969.html",
+        "https://prtimes.jp/main/html/rd/p/000006410.000003442.html",
+        "https://www.nikkei.com/article/DGXMZO10881820Q6A221C1I00000/",
+        "https://holdings.panasonic/jp/corporate/technology/awards/list/2024.html"
       ]
     },
     {
@@ -434,9 +440,7 @@ p{font-size:15px;color:var(--ink-soft)}
 .res-visual img{border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line)}
 .res-visual figcaption{font-size:11.5px;color:var(--ink-soft);text-align:center;margin-top:10px}
 
-.media-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-@media (max-width:900px){.media-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:520px){.media-grid{grid-template-columns:1fr}}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
 .media-card{
   display:flex;flex-direction:column;gap:8px;
   background:#fff;border:1px solid var(--line);border-radius:14px;
@@ -498,13 +502,15 @@ p{font-size:15px;color:var(--ink-soft)}
 .prof-links{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media (max-width:640px){.prof-links{grid-template-columns:1fr}}
 .prof-links a{
-  display:flex;align-items:center;gap:10px;
+  display:flex;align-items:flex-start;gap:10px;
   background:#fff;border:1px solid var(--line);border-radius:12px;
-  padding:12px 14px;font-size:12px;font-weight:700;color:var(--ink);line-height:1.6;
+  padding:12px 14px;color:var(--ink);
   box-shadow:var(--shadow-sm);transition:transform .2s,border-color .25s;
 }
 .prof-links a:hover{transform:translateY(-2px);border-color:rgba(200,169,93,.6)}
-.prof-links a svg{width:15px;height:15px;flex:0 0 15px;color:var(--gold-700)}
+.prof-links a svg{width:15px;height:15px;flex:0 0 15px;margin-top:2px;color:var(--gold-700)}
+.prof-links a .src{display:block;font-size:10.5px;font-weight:900;color:var(--green-800);letter-spacing:.06em;margin-bottom:3px}
+.prof-links a .ttl{display:block;font-size:12px;font-weight:600;color:var(--ink);line-height:1.6}
 .prof-milestones{margin:clamp(40px,5vw,60px) auto 0;max-width:900px}
 
 /* ================= FAQ ================= */
@@ -848,6 +854,16 @@ p{font-size:15px;color:var(--ink-soft)}
         <b>柏の葉見学ツアー 案内として掲載</b>
         <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
+      <a class="media-card rv rv-d4" href="https://www.tv-tokyo.co.jp/broad_tvtokyo/program/detail/202312/25909_202312242605.html" target="_blank" rel="noopener">
+        <span class="tag">テレビ東京</span>
+        <b>「田村淳のTaMaRiBa」ビジネスピッチコンテスト『ハツメイノハ』特集</b>
+        <span class="lnk">番組ページを見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="media-card rv rv-d5" href="https://www.facebook.com/kashiwanoha.smart/posts/1056723339628269/" target="_blank" rel="noopener">
+        <span class="tag">Facebook</span>
+        <b>柏の葉スマートシティ公式：事業企画第一弾実現の告知</b>
+        <span class="lnk">投稿を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
@@ -915,25 +931,49 @@ p{font-size:15px;color:var(--ink-soft)}
           <li>技術や街づくりの取り組みを分かりやすく「翻訳」し、現場と事業をつなぐことが得意</li>
         </ul>
         <div class="prof-links">
-          <a href="https://connect.panasonic.com/jp-ja/about/who-we-are/experience/evangelist" target="_blank" rel="noopener">
+          <a href="https://connect.panasonic.com/jp-ja/about/who-we-are/experience/evangelist#furuta" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            パナソニック コネクト「エバンジェリスト」紹介ページ
+            <span><span class="src">Panasonic Connect</span><span class="ttl">公式エバンジェリスト紹介ページ</span></span>
           </a>
           <a href="https://connect.panasonic.com/jp-ja/gemba/article/sensing-evangelist-furuta" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            エバンジェリスト古田邦夫 インタビュー記事
+            <span><span class="src">Panasonic Connect</span><span class="ttl">エバンジェリスト古田邦夫 インタビュー記事</span></span>
           </a>
           <a href="https://connect.panasonic.com/jp-ja/about/who-we-are/experience/evangelist/seminar211015" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            金融国際情報技術展セミナー登壇レポート
+            <span><span class="src">Panasonic Connect</span><span class="ttl">金融国際情報技術展セミナー登壇レポート</span></span>
           </a>
           <a href="https://www.pc-webzine.com/article/630" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            PC-Webzine：顔認証に関するコメント掲載
+            <span><span class="src">PC-Webzine</span><span class="ttl">顔認証に関するコメント掲載</span></span>
           </a>
           <a href="https://news.panasonic.com/jp/press/jn210428-1" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Panasonic Newsroom：公式エバンジェリスト就任プレスリリース
+            <span><span class="src">Panasonic Newsroom Japan</span><span class="ttl">公式エバンジェリスト就任プレスリリース</span></span>
+          </a>
+          <a href="https://www.nikkei.com/article/DGXZQOUF026H00S3A300C2000000/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><span class="src">日本経済新聞</span><span class="ttl">パナコネクト、顔認証システム「120社超参加し共創」</span></span>
+          </a>
+          <a href="https://japan.zdnet.com/article/35206075/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><span class="src">ZDNET Japan</span><span class="ttl">多様な現場で活躍する、パナソニック コネクトの顔認証技術</span></span>
+          </a>
+          <a href="https://www.dnp.co.jp/biz/column/detail/20173467_4969.html" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><span class="src">DNP公式コラム</span><span class="ttl">DNP×パナソニック 顔認証スペシャルセミナー「DNP THE SESSION 2024」開催レポート</span></span>
+          </a>
+          <a href="https://prtimes.jp/main/html/rd/p/000006410.000003442.html" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><span class="src">PR TIMES</span><span class="ttl">パナソニック コネクト、金融国際情報技術展「FIT2025」に出展</span></span>
+          </a>
+          <a href="https://www.nikkei.com/article/DGXMZO10881820Q6A221C1I00000/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><span class="src">日本経済新聞</span><span class="ttl">見た目メガホン、実は翻訳機 メガホンヤクの実力</span></span>
+          </a>
+          <a href="https://holdings.panasonic/jp/corporate/technology/awards/list/2024.html" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><span class="src">パナソニックHD 技術表彰2024</span><span class="ttl">発明奨励賞「顔認証の進行表示機能を備えた顔認証機」共同発明者掲載</span></span>
           </a>
         </div>
       </div>
