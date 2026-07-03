@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://furuta-ideas.github.io/kashiwanoha-tour-On/sitemap.xml
