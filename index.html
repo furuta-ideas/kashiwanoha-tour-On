@@ -390,9 +390,8 @@ p{font-size:15px;color:var(--ink-soft)}
 
 /* ================= Results / Media ================= */
 .results{padding:clamp(56px,7vw,96px) 0}
-.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3.5vw,44px);align-items:center;margin-bottom:clamp(32px,4vw,48px)}
-@media (max-width:900px){.res-grid{grid-template-columns:1fr}}
-.res-nums{display:flex;gap:16px;flex-wrap:wrap;margin-top:22px}
+.res-intro{max-width:640px;margin:0 auto clamp(32px,4vw,48px);text-align:center}
+.res-nums{display:flex;gap:16px;flex-wrap:wrap;margin-top:22px;justify-content:center}
 .res-num{
   flex:1;min-width:150px;text-align:center;
   background:#fff;border:1px solid rgba(200,169,93,.5);border-radius:var(--radius);
@@ -483,6 +482,7 @@ p{font-size:15px;color:var(--ink-soft)}
 }
 .prof-links a:hover{transform:translateY(-2px);border-color:rgba(200,169,93,.6)}
 .prof-links a svg{width:15px;height:15px;flex:0 0 15px;color:var(--gold-700)}
+.prof-milestones{margin:clamp(40px,5vw,60px) auto 0;max-width:900px}
 
 /* ================= FAQ ================= */
 .faq{background:var(--green-050);padding:clamp(56px,7vw,96px) 0}
@@ -629,11 +629,10 @@ p{font-size:15px;color:var(--ink-soft)}
         <h2 class="sec-title" style="font-size:clamp(18px,2.4vw,24px)">観て終わりにしない。<br>学びを、次の一手に変える視察へ。</h2>
         <p>柏の葉キャンパス駅を中心としたスマートシティの街を実際に歩きながら、表面的な施設紹介ではなく、街の背景や取り組みの意味を住民ガイドの視点でお伝えします。マニュアル通りの案内ではなく、対話と問いで深掘りし、AIツールとデザイン思考で気づきをアイデアに変えていきます。</p>
         <ul class="about-points">
-          <li>「やりたいこと」を事前ヒアリングし、内容をセミカスタマイズ</li>
+          <li>事前ヒアリングで、内容をセミカスタマイズ</li>
           <li>企業の公式エバンジェリストがファシリテーション</li>
           <li>実際に住み、働く住民のリアルな声に触れられる</li>
-          <li>AIワークショップで、気づきやアイデアを可視化・言語化</li>
-          <li>スマートシティを“外から眺める”のではなく“中の視点”で理解</li>
+          <li>ＡＩを活用したワークショップでアイデアを可視化</li>
         </ul>
       </div>
       <div class="rv rv-d1">
@@ -795,19 +794,13 @@ p{font-size:15px;color:var(--ink-soft)}
       <h2 class="sec-title">実績・掲載紹介 ─ 累計4回開催・701名動員</h2>
       <div class="gold-line"></div>
     </div>
-    <div class="res-grid">
-      <div class="rv">
-        <p>2023年の「ハツメイノハ」ファイナリスト登壇をきっかけに、東京大学主催イベントやスポーツイベントとの連携、大学・研究所・民間企業・旅行会社との共創ツアーへと広がってきました。</p>
-        <div class="res-nums">
-          <div class="res-num"><span class="num"><span class="count" data-to="4">0</span><small>回</small></span><span class="cap">累計開催回数</span></div>
-          <div class="res-num"><span class="num"><span class="count" data-to="701">0</span><small>名</small></span><span class="cap">累計動員人数</span></div>
-        </div>
-        <p style="font-size:11px;margin-top:10px">※ 2026年4月1日時点</p>
+    <div class="res-intro rv">
+      <p>2023年の「ハツメイノハ」ファイナリスト登壇をきっかけに、東京大学主催イベントやスポーツイベントとの連携、大学・研究所・民間企業・旅行会社との共創ツアーへと広がってきました。</p>
+      <div class="res-nums">
+        <div class="res-num"><span class="num"><span class="count" data-to="4">0</span><small>回</small></span><span class="cap">累計開催回数</span></div>
+        <div class="res-num"><span class="num"><span class="count" data-to="701">0</span><small>名</small></span><span class="cap">累計動員人数</span></div>
       </div>
-      <figure class="res-visual rv rv-d1">
-        <img src="assets/lp/history.jpg" alt="柏の葉スマートシティツアーのこれまでの歩み ─ 2023年ハツメイノハ登壇、2024年東京大学主催イベント・スポーツイベント連携、2025年大学・研究所・民間企業・旅行会社との共創ツアー" loading="lazy" />
-        <figcaption>これまでの歩み(2023〜2025)</figcaption>
-      </figure>
+      <p style="font-size:11px;margin-top:10px">※ 2026年4月1日時点</p>
     </div>
     <h3 style="font-size:15px;font-weight:900;color:var(--green-900);margin-bottom:14px" class="rv">掲載・紹介実績</h3>
     <div class="media-grid">
@@ -884,12 +877,12 @@ p{font-size:15px;color:var(--ink-soft)}
     </div>
     <div class="prof-grid">
       <div class="prof-photo rv">
-        <img src="assets/lp/profile-furuta.jpg" alt="柏の葉スマートシティツアーズ代表・古田邦夫のプロフィール写真" width="424" height="710" loading="lazy" />
+        <img src="assets/lp/profile-furuta.jpg" alt="柏の葉スマートシティツアーズ代表・古田邦夫のプロフィール写真" width="424" height="540" loading="lazy" />
       </div>
       <div class="rv rv-d1">
         <p class="prof-lead">住民のリアルな視点と、企業エバンジェリストの専門性で、<br>街の価値を「あなたの次の一手」に翻訳します。</p>
         <div class="prof-name"><span class="nm">古田 邦夫</span><span class="en">KUNIO FURUTA</span></div>
-        <p class="prof-role">柏の葉スマートシティツアーズ 代表／＋Onツアー ナビゲーター<br>大手電機メーカー（パナソニック コネクト）公式エバンジェリスト</p>
+        <p class="prof-role">柏の葉スマートシティツアーズ 代表<br>大手電機メーカー 公式エバンジェリスト</p>
         <ul class="prof-story">
           <li>2019年、柏の葉に一目ぼれし移住。以来、住民として街の変化を見つめ続ける</li>
           <li>2023年、柏の葉のインキュベーションプログラム「ハツメイノハ」ファイナリストとして登壇。以降、柏の葉スマートシティツアーを開催</li>
@@ -921,6 +914,10 @@ p{font-size:15px;color:var(--ink-soft)}
         </div>
       </div>
     </div>
+    <figure class="res-visual prof-milestones rv rv-d2">
+      <img src="assets/lp/history.jpg" alt="柏の葉スマートシティツアーのこれまでの歩み ─ 2023年ハツメイノハ登壇、2024年東京大学主催イベント・スポーツイベント連携、2025年大学・研究所・民間企業・旅行会社との共創ツアー" loading="lazy" />
+      <figcaption>これまでの歩み(2023〜2025)</figcaption>
+    </figure>
   </div>
 </section>
 
