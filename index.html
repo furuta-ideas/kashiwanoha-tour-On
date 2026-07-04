@@ -274,6 +274,8 @@ p{font-size:15px;color:var(--ink-soft)}
   line-height:1.55;letter-spacing:.04em;margin-bottom:26px;
 }
 .fv-card h1 .gold{color:var(--gold-700)}
+.fv-card h1 .sp-br{display:none}
+@media (max-width:640px){.fv-card h1 .sp-br{display:block}}
 .fv-ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:24px}
 .fv-stats{
   display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;align-items:center;
@@ -289,8 +291,8 @@ p{font-size:15px;color:var(--ink-soft)}
 
 /* ================= About / vs table ================= */
 .about{background:var(--green-050);padding:clamp(56px,7vw,96px) 0}
-.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,54px);align-items:center}
-@media (max-width:900px){.about-grid{grid-template-columns:1fr}}
+.about-grid{display:flex;flex-direction:column;gap:clamp(32px,4.5vw,48px)}
+.about-copy{max-width:720px;width:100%;margin:0 auto}
 .about-copy h2{margin-bottom:16px}
 .about-copy p{margin-bottom:14px}
 .about-points{margin-top:18px;display:flex;flex-direction:column;gap:10px}
@@ -303,9 +305,11 @@ p{font-size:15px;color:var(--ink-soft)}
   content:"";position:absolute;left:5px;top:13.5px;width:8px;height:5px;
   border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg);
 }
+.vs-wrap-outer{max-width:820px;width:100%;margin:0 auto}
+.vs-wrap{overflow-x:auto}
 .vs-card{
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-  box-shadow:var(--shadow-sm);overflow:hidden;
+  box-shadow:var(--shadow-sm);overflow:hidden;table-layout:fixed;min-width:720px;
 }
 .vs-card caption{
   text-align:left;padding:16px 20px 12px;
@@ -313,7 +317,7 @@ p{font-size:15px;color:var(--ink-soft)}
 }
 .vs-card th,.vs-card td{
   padding:12px 14px;font-size:13px;line-height:1.7;vertical-align:top;
-  border-bottom:1px solid var(--line);
+  border-bottom:1px solid var(--line);white-space:nowrap;
 }
 .vs-card tr:last-child th,.vs-card tr:last-child td{border-bottom:none}
 .vs-card thead th{background:var(--green-050);font-size:13px;color:var(--ink)}
@@ -321,7 +325,11 @@ p{font-size:15px;color:var(--ink-soft)}
   background:linear-gradient(135deg,rgba(200,169,93,.18),rgba(200,169,93,.08));
   color:var(--gold-700);font-weight:900;
 }
-.vs-card tbody th{width:96px;background:#fbfdf9;font-weight:700;color:var(--ink-soft);font-size:12.5px}
+.vs-card thead .th-flex{display:inline-flex;align-items:center;gap:7px}
+.vs-card thead .th-flex .th-logo{width:17px;height:17px;flex:0 0 auto}
+.vs-card thead th:nth-child(2) .th-logo{color:var(--ink-soft)}
+.vs-card thead th:last-child .th-logo{border-radius:5px;object-fit:contain}
+.vs-card tbody th{width:100px;background:#fbfdf9;font-weight:700;color:var(--ink-soft);font-size:12.5px;white-space:normal}
 .vs-card td.on{background:rgba(200,169,93,.06);font-weight:600;color:var(--ink)}
 
 /* ================= Audience ================= */
@@ -439,10 +447,11 @@ p{font-size:15px;color:var(--ink-soft)}
 .res-num .cap{font-size:12px;font-weight:700;color:var(--ink-soft);letter-spacing:.06em}
 .res-visual img{border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line)}
 .res-visual figcaption{font-size:11.5px;color:var(--ink-soft);text-align:center;margin-top:10px}
+.res-milestones{max-width:900px;margin:0 auto clamp(32px,4vw,44px)}
 
 .media-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
 .media-card{
-  display:flex;flex-direction:column;gap:8px;
+  display:flex;flex-direction:column;gap:8px;cursor:pointer;
   background:#fff;border:1px solid var(--line);border-radius:14px;
   padding:18px;box-shadow:var(--shadow-sm);
   transition:transform .25s,box-shadow .25s,border-color .25s;
@@ -456,6 +465,19 @@ p{font-size:15px;color:var(--ink-soft)}
 .media-card b{font-size:13px;font-weight:700;color:var(--ink);line-height:1.6;flex:1}
 .media-card .lnk{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:var(--gold-700)}
 .media-card .lnk svg{width:12px;height:12px}
+.media-card--video{padding:0;gap:0;overflow:hidden}
+.media-card--video .thumb{position:relative;aspect-ratio:16/10;background:var(--green-050)}
+.media-card--video .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.media-card--video .thumb::before{content:"";position:absolute;inset:0;background:rgba(10,20,15,.18);z-index:1}
+.media-card--video .play-btn{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
+  width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.94);
+  display:grid;place-items:center;color:var(--green-800);box-shadow:0 8px 22px rgba(0,0,0,.32);
+  transition:transform .25s;
+}
+.media-card--video:hover .play-btn{transform:translate(-50%,-50%) scale(1.08)}
+.media-card--video .play-btn svg{width:22px;height:22px;margin-left:2px}
+.media-card--video .card-body{display:flex;flex-direction:column;gap:8px;padding:14px 16px 16px;flex:1}
 
 /* ================= Voices ================= */
 .voices{background:var(--green-050);padding:clamp(56px,7vw,96px) 0}
@@ -499,32 +521,6 @@ p{font-size:15px;color:var(--ink-soft)}
   content:"";position:absolute;left:2px;top:11px;width:8px;height:8px;border-radius:50%;
   background:linear-gradient(135deg,var(--gold-500),var(--gold-700));
 }
-.prof-links{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-@media (max-width:640px){.prof-links{grid-template-columns:1fr}}
-.prof-links a{
-  display:flex;align-items:flex-start;gap:10px;
-  background:#fff;border:1px solid var(--line);border-radius:12px;
-  padding:12px 14px;color:var(--ink);
-  box-shadow:var(--shadow-sm);transition:transform .2s,border-color .25s;
-}
-.prof-links a:hover{transform:translateY(-2px);border-color:rgba(200,169,93,.6)}
-.prof-links a svg{width:15px;height:15px;flex:0 0 15px;margin-top:2px;color:var(--gold-700)}
-.prof-links a .src{display:block;font-size:10.5px;font-weight:900;color:var(--green-800);letter-spacing:.06em;margin-bottom:3px}
-.prof-links a .ttl{display:block;font-size:12px;font-weight:600;color:var(--ink);line-height:1.6}
-.links-group-label{
-  display:flex;align-items:center;gap:8px;
-  font-size:12px;font-weight:900;color:var(--green-900);letter-spacing:.08em;
-  margin:0 0 10px;
-}
-.links-group-label:not(:first-child){margin-top:26px}
-.links-group-label .badge{
-  font-family:'Outfit','Noto Sans JP',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;
-  padding:3px 10px;border-radius:999px;color:#fff;
-  background:linear-gradient(135deg,var(--green-700),var(--green-900));
-}
-.links-group-label.is-side .badge{background:linear-gradient(135deg,#b3924a,var(--gold-500))}
-.prof-milestones{margin:clamp(40px,5vw,60px) auto 0;max-width:900px}
-
 /* ================= FAQ ================= */
 .faq{background:var(--green-050);padding:clamp(56px,7vw,96px) 0}
 .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;align-items:start}
@@ -612,6 +608,35 @@ p{font-size:15px;color:var(--ink-soft)}
 }
 .float-cta svg{width:16px;height:16px}
 @media (max-width:840px){.float-cta.show{display:inline-flex}}
+
+/* ================= Link modal ================= */
+.link-modal{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:20px}
+.link-modal[hidden]{display:none}
+.lm-backdrop{position:absolute;inset:0;background:rgba(12,26,17,.62);backdrop-filter:blur(3px)}
+.lm-panel{
+  position:relative;background:#fff;border-radius:18px;box-shadow:0 40px 90px rgba(0,0,0,.4);
+  width:min(980px,100%);height:min(82vh,720px);display:flex;flex-direction:column;overflow:hidden;
+}
+.lm-head{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:14px 18px;border-bottom:1px solid var(--line);background:var(--green-050);flex:0 0 auto;
+}
+.lm-title{font-size:13.5px;font-weight:900;color:var(--green-900);line-height:1.5}
+.lm-actions{display:flex;align-items:center;gap:14px;flex:0 0 auto}
+.lm-open{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--gold-700);white-space:nowrap}
+.lm-open svg{width:12px;height:12px}
+.lm-close{
+  width:30px;height:30px;flex:0 0 30px;border-radius:50%;display:grid;place-items:center;
+  font-size:20px;line-height:1;color:var(--ink-soft);transition:background .2s;
+}
+.lm-close:hover{background:rgba(0,0,0,.08)}
+.lm-body{position:relative;flex:1;background:#0f1310}
+.lm-frame{position:absolute;inset:0;width:100%;height:100%;border:0}
+.lm-fallback{
+  position:absolute;bottom:10px;left:0;right:0;text-align:center;
+  font-size:11px;color:rgba(255,255,255,.75);pointer-events:none;
+}
+@media (max-width:640px){.lm-panel{height:min(86vh,640px);border-radius:14px}}
 </style>
 </head>
 <body>
@@ -640,7 +665,7 @@ p{font-size:15px;color:var(--ink-soft)}
   <div class="wrap">
     <div class="fv-card rv">
       <span class="pos">公式ツアーに、対話・AI・ワークショップを＋Onするプレミアム体験</span>
-      <h1>柏の葉スマートシティの視察を、見学だけで終わらせない。<br><span class="gold">街に学び、対話で深め、アイデアをカタチに。</span></h1>
+      <h1>柏の葉スマートシティの視察を、<br class="sp-br">見学だけで終わらせない。<br><span class="gold">街に学び、対話で深め、アイデアをカタチに。</span></h1>
       <div class="fv-ctas">
         <a class="btn btn--gold" href="#contact">
           まずは相談する
@@ -672,26 +697,33 @@ p{font-size:15px;color:var(--ink-soft)}
         <p>柏の葉キャンパス駅を中心としたスマートシティの街を実際に歩きながら、表面的な施設紹介ではなく、街の背景や取り組みの意味を住民ガイドの視点でお伝えします。マニュアル通りの案内ではなく、対話と問いで深掘りし、AIツールとデザイン思考で気づきをアイデアに変えていきます。</p>
         <ul class="about-points">
           <li>事前ヒアリングで、内容をセミカスタマイズ</li>
-          <li>企業の公式エバンジェリストがファシリテーション</li>
+          <li>企業のエバンジェリストがファシリテーション</li>
           <li>実際に住み、働く住民のリアルな声に触れられる</li>
           <li>ＡＩを活用したワークショップでアイデアを可視化</li>
         </ul>
       </div>
-      <div class="rv rv-d1">
-        <table class="vs-card">
-          <caption>公式ツアーと＋Onツアーの違い</caption>
-          <thead>
-            <tr><th></th><th>公式ツアー</th><th>＋Onツアー</th></tr>
-          </thead>
-          <tbody>
-            <tr><th>位置づけ</th><td>全体像を知る入口</td><td class="on">目的に合わせた深い学び</td></tr>
-            <tr><th>ガイド</th><td>標準的なご案内</td><td class="on">住民×エバンジェリストが対話で深掘り</td></tr>
-            <tr><th>内容</th><td>定番コース</td><td class="on">事前ヒアリングでセミカスタマイズ</td></tr>
-            <tr><th>AI活用</th><td>─</td><td class="on">AIワークショップで発想をカタチに</td></tr>
-            <tr><th>ゴール</th><td>街を知る</td><td class="on">事業・研究・教育の「次の一手」</td></tr>
-          </tbody>
-        </table>
-        <p style="font-size:11.5px;margin-top:10px">※ 公式ツアーを否定するものではありません。全体像の把握には公式ツアーもおすすめしており、併用・連携も歓迎です。</p>
+      <div class="vs-wrap-outer rv rv-d1">
+        <div class="vs-wrap">
+          <table class="vs-card">
+            <caption>公式ツアーと＋Onツアーの違い</caption>
+            <colgroup><col style="width:110px" /><col style="width:305px" /><col style="width:305px" /></colgroup>
+            <thead>
+              <tr>
+                <th></th>
+                <th><span class="th-flex"><svg class="th-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>公式ツアー</span></th>
+                <th><span class="th-flex"><img class="th-logo" src="assets/lp/logo-mark.png" alt="" width="17" height="17" />＋Onツアー</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th>位置づけ</th><td>全体像を知る入口</td><td class="on">目的に合わせた深い学び</td></tr>
+              <tr><th>ガイド</th><td>標準的なご案内</td><td class="on">住民×エバンジェリストが対話で深掘り</td></tr>
+              <tr><th>内容</th><td>定番コース</td><td class="on">事前ヒアリングでセミカスタマイズ</td></tr>
+              <tr><th>AI活用</th><td>─</td><td class="on">AIワークショップで発想をカタチに</td></tr>
+              <tr><th>ゴール</th><td>街を知る</td><td class="on">事業・研究・教育の「次の一手」</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:11.5px;margin-top:10px;text-align:center">※ 公式ツアーを否定するものではありません。全体像の把握には公式ツアーもおすすめしており、併用・連携も歓迎です。</p>
       </div>
     </div>
   </div>
@@ -778,7 +810,7 @@ p{font-size:15px;color:var(--ink-soft)}
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">FLOW</span>
-      <h2 class="sec-title">ツアーの流れ ─ ヒアリングから振り返りまで</h2>
+      <h2 class="sec-title">ツアーの流れ</h2>
       <div class="gold-line"></div>
     </div>
     <div class="flow-steps">
@@ -797,7 +829,7 @@ p{font-size:15px;color:var(--ink-soft)}
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">OPTIONS</span>
-      <h2 class="sec-title">追加オプション ─ AIワークショップ・クイズ・成果物サポート</h2>
+      <h2 class="sec-title">追加オプション</h2>
       <div class="gold-line"></div>
       <p>目的に応じて組み合わせられるオプションをご用意しています。実際の開催で使用した成果物・画面の一例と合わせてご紹介します。</p>
     </div>
@@ -833,7 +865,7 @@ p{font-size:15px;color:var(--ink-soft)}
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">RESULTS</span>
-      <h2 class="sec-title">実績・掲載紹介 ─ 累計45回開催・701名動員</h2>
+      <h2 class="sec-title">実績・掲載紹介</h2>
       <div class="gold-line"></div>
     </div>
     <div class="res-intro rv">
@@ -844,34 +876,49 @@ p{font-size:15px;color:var(--ink-soft)}
       </div>
       <p style="font-size:11px;margin-top:10px">※ 2026年4月1日時点</p>
     </div>
+    <figure class="res-visual res-milestones rv">
+      <img src="assets/lp/history.jpg" alt="柏の葉スマートシティツアーのこれまでの歩み ─ 2023年ハツメイノハ登壇、2024年東京大学主催イベント・スポーツイベント連携、2025年大学・研究所・民間企業・旅行会社との共創ツアー" loading="lazy" />
+      <figcaption>これまでの歩み(2023〜2025)</figcaption>
+    </figure>
     <h3 style="font-size:15px;font-weight:900;color:var(--green-900);margin-bottom:14px" class="rv">掲載・紹介実績</h3>
     <div class="media-grid">
-      <a class="media-card rv" href="https://kashiwanoha-innovation.jp/interview03" target="_blank" rel="noopener">
+      <a class="media-card media-card--video rv" href="https://youtu.be/JBC97TSkr9c" data-embed="https://www.youtube.com/embed/JBC97TSkr9c?autoplay=1&amp;rel=0">
+        <div class="thumb">
+          <img src="assets/lp/media-video-mitsui.jpg" alt="三井不動産×Replayce ─ 柏の葉カンファレンスセンターで「未来を創る」2日間" loading="lazy" />
+          <span class="play-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="card-body">
+          <span class="tag">YouTube</span>
+          <b>三井不動産×Replayce</b>
+          <span class="lnk">動画を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+      <a class="media-card rv rv-d1" href="https://kashiwanoha-innovation.jp/interview03">
         <span class="tag">インタビュー</span>
         <b>ハツメイノハ 昨年度ファイナリストインタビュー</b>
         <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
-      <a class="media-card rv rv-d1" href="https://prtimes.jp/main/html/rd/p/000000002.000160545.html" target="_blank" rel="noopener">
-        <span class="tag">PR TIMES</span>
-        <b>株式会社AT 柏の葉スマートシティツアー／案内人として掲載</b>
-        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
-      <a class="media-card rv rv-d2" href="https://www.kashiwanoha-navi.jp/events/event/event-3481" target="_blank" rel="noopener">
-        <span class="tag">柏の葉ナビ</span>
-        <b>Kサロン「＋Onツーリズム」ゲストとして掲載</b>
-        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
-      <a class="media-card rv rv-d3" href="https://k-addtimes.com/?p=4503" target="_blank" rel="noopener">
-        <span class="tag">K-addtimes</span>
-        <b>柏の葉見学ツアー 案内として掲載</b>
-        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
-      <a class="media-card rv rv-d4" href="https://www.tv-tokyo.co.jp/broad_tvtokyo/program/detail/202312/25909_202312242605.html" target="_blank" rel="noopener">
+      <a class="media-card rv rv-d2" href="https://www.tv-tokyo.co.jp/broad_tvtokyo/program/detail/202312/25909_202312242605.html">
         <span class="tag">テレビ東京</span>
         <b>「田村淳のTaMaRiBa」ビジネスピッチコンテスト『ハツメイノハ』特集</b>
         <span class="lnk">番組ページを見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
-      <a class="media-card rv rv-d5" href="https://www.facebook.com/kashiwanoha.smart/posts/1056723339628269/" target="_blank" rel="noopener">
+      <a class="media-card rv rv-d3" href="https://prtimes.jp/main/html/rd/p/000000002.000160545.html">
+        <span class="tag">PR TIMES</span>
+        <b>株式会社AT 柏の葉スマートシティツアー／案内人として掲載</b>
+        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="media-card rv rv-d4" href="https://www.kashiwanoha-navi.jp/events/event/event-3481">
+        <span class="tag">柏の葉ナビ</span>
+        <b>Kサロン「＋Onツーリズム」ゲストとして掲載</b>
+        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="media-card rv rv-d5" href="https://k-addtimes.com/?p=4503">
+        <span class="tag">K-addtimes</span>
+        <b>柏の葉見学ツアー 案内として掲載</b>
+        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="media-card rv" href="https://www.facebook.com/kashiwanoha.smart/posts/1056723339628269/">
         <span class="tag">Facebook</span>
         <b>柏の葉スマートシティ公式：事業企画第一弾実現の告知</b>
         <span class="lnk">投稿を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -924,7 +971,7 @@ p{font-size:15px;color:var(--ink-soft)}
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">NAVIGATOR</span>
-      <h2 class="sec-title">代表者紹介 ─ 古田邦夫（パナソニック コネクト 公式エバンジェリスト）</h2>
+      <h2 class="sec-title">代表者紹介</h2>
       <div class="gold-line"></div>
     </div>
     <div class="prof-grid">
@@ -942,70 +989,66 @@ p{font-size:15px;color:var(--ink-soft)}
           <li>企業との新規事業共創活動のファシリテーターとして、デザイン思考を活用したワークショップを多数実施</li>
           <li>技術や街づくりの取り組みを分かりやすく「翻訳」し、現場と事業をつなぐことが得意</li>
         </ul>
-        <p class="links-group-label"><span class="badge">本業</span>パナソニック コネクト 公式エバンジェリストとして</p>
-        <div class="prof-links">
-          <a href="https://connect.panasonic.com/jp-ja/about/who-we-are/experience/evangelist#furuta" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span><span class="src">Panasonic Connect</span><span class="ttl">公式エバンジェリスト紹介ページ</span></span>
-          </a>
-          <a href="https://connect.panasonic.com/jp-ja/gemba/article/sensing-evangelist-furuta" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span><span class="src">Panasonic Connect</span><span class="ttl">エバンジェリスト古田邦夫 インタビュー記事</span></span>
-          </a>
-          <a href="https://connect.panasonic.com/jp-ja/about/who-we-are/experience/evangelist/seminar211015" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span><span class="src">Panasonic Connect</span><span class="ttl">金融国際情報技術展セミナー登壇レポート</span></span>
-          </a>
-          <a href="https://www.pc-webzine.com/article/630" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span><span class="src">PC-Webzine</span><span class="ttl">顔認証に関するコメント掲載</span></span>
-          </a>
-          <a href="https://news.panasonic.com/jp/press/jn210428-1" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span><span class="src">Panasonic Newsroom Japan</span><span class="ttl">公式エバンジェリスト就任プレスリリース</span></span>
-          </a>
-          <a href="https://www.nikkei.com/article/DGXZQOUF026H00S3A300C2000000/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span><span class="src">日本経済新聞</span><span class="ttl">パナコネクト、顔認証システム「120社超参加し共創」</span></span>
-          </a>
-          <a href="https://japan.zdnet.com/article/35206075/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span><span class="src">ZDNET Japan</span><span class="ttl">多様な現場で活躍する、パナソニック コネクトの顔認証技術</span></span>
-          </a>
-          <a href="https://www.dnp.co.jp/biz/column/detail/20173467_4969.html" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span><span class="src">DNP公式コラム</span><span class="ttl">DNP×パナソニック 顔認証スペシャルセミナー「DNP THE SESSION 2024」開催レポート</span></span>
-          </a>
-          <a href="https://prtimes.jp/main/html/rd/p/000006410.000003442.html" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span><span class="src">PR TIMES</span><span class="ttl">パナソニック コネクト、金融国際情報技術展「FIT2025」に出展</span></span>
-          </a>
-          <a href="https://www.nikkei.com/article/DGXMZO10881820Q6A221C1I00000/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span><span class="src">日本経済新聞</span><span class="ttl">見た目メガホン、実は翻訳機 メガホンヤクの実力</span></span>
-          </a>
-          <a href="https://holdings.panasonic/jp/corporate/technology/awards/list/2024.html" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span><span class="src">パナソニックHD 技術表彰2024</span><span class="ttl">発明奨励賞「顔認証の進行表示機能を備えた顔認証機」共同発明者掲載</span></span>
-          </a>
-        </div>
-        <p class="links-group-label is-side"><span class="badge">副業</span>柏の葉スマートシティツアーズ 代表として</p>
-        <div class="prof-links">
-          <a href="https://www.tv-tokyo.co.jp/broad_tvtokyo/program/detail/202312/25909_202312242605.html" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span><span class="src">テレビ東京</span><span class="ttl">「田村淳のTaMaRiBa」ビジネスピッチコンテスト『ハツメイノハ』特集</span></span>
-          </a>
-          <a href="https://www.facebook.com/kashiwanoha.smart/posts/1056723339628269/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span><span class="src">Facebook</span><span class="ttl">柏の葉スマートシティ公式：事業企画第一弾実現の告知</span></span>
-          </a>
-        </div>
       </div>
     </div>
-    <figure class="res-visual prof-milestones rv rv-d2">
-      <img src="assets/lp/history.jpg" alt="柏の葉スマートシティツアーのこれまでの歩み ─ 2023年ハツメイノハ登壇、2024年東京大学主催イベント・スポーツイベント連携、2025年大学・研究所・民間企業・旅行会社との共創ツアー" loading="lazy" />
-      <figcaption>これまでの歩み(2023〜2025)</figcaption>
-    </figure>
+    <h3 style="font-size:15px;font-weight:900;color:var(--green-900);margin:clamp(36px,4.5vw,52px) 0 14px" class="rv">パナソニック コネクト 公式エバンジェリストとしての掲載実績</h3>
+    <div class="media-grid">
+      <a class="media-card rv" href="https://connect.panasonic.com/jp-ja/about/who-we-are/experience/evangelist#furuta">
+        <span class="tag">Panasonic Connect</span>
+        <b>公式エバンジェリスト紹介ページ</b>
+        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="media-card rv rv-d1" href="https://connect.panasonic.com/jp-ja/gemba/article/sensing-evangelist-furuta">
+        <span class="tag">Panasonic Connect</span>
+        <b>エバンジェリスト古田邦夫 インタビュー記事</b>
+        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="media-card rv rv-d2" href="https://connect.panasonic.com/jp-ja/about/who-we-are/experience/evangelist/seminar211015">
+        <span class="tag">Panasonic Connect</span>
+        <b>金融国際情報技術展セミナー登壇レポート</b>
+        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="media-card rv rv-d3" href="https://news.panasonic.com/jp/press/jn210428-1">
+        <span class="tag">Panasonic Newsroom Japan</span>
+        <b>公式エバンジェリスト就任プレスリリース</b>
+        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="media-card rv rv-d4" href="https://www.nikkei.com/article/DGXZQOUF026H00S3A300C2000000/">
+        <span class="tag">日本経済新聞</span>
+        <b>パナコネクト、顔認証システム「120社超参加し共創」</b>
+        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="media-card rv rv-d5" href="https://japan.zdnet.com/article/35206075/">
+        <span class="tag">ZDNET Japan</span>
+        <b>多様な現場で活躍する、パナソニック コネクトの顔認証技術</b>
+        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="media-card rv" href="https://www.dnp.co.jp/biz/column/detail/20173467_4969.html">
+        <span class="tag">DNP公式コラム</span>
+        <b>DNP×パナソニック 顔認証スペシャルセミナー「DNP THE SESSION 2024」開催レポート</b>
+        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="media-card rv rv-d1" href="https://prtimes.jp/main/html/rd/p/000006410.000003442.html">
+        <span class="tag">PR TIMES</span>
+        <b>パナソニック コネクト、金融国際情報技術展「FIT2025」に出展</b>
+        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="media-card rv rv-d2" href="https://www.nikkei.com/article/DGXMZO10881820Q6A221C1I00000/">
+        <span class="tag">日本経済新聞</span>
+        <b>見た目メガホン、実は翻訳機 メガホンヤクの実力</b>
+        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="media-card rv rv-d3" href="https://holdings.panasonic/jp/corporate/technology/awards/list/2024.html">
+        <span class="tag">パナソニックHD 技術表彰2024</span>
+        <b>発明奨励賞「顔認証の進行表示機能を備えた顔認証機」共同発明者掲載</b>
+        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="media-card rv rv-d4" href="https://www.pc-webzine.com/article/630">
+        <span class="tag">PC-Webzine</span>
+        <b>顔認証に関するコメント掲載</b>
+        <span class="lnk">記事を見る <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1104,6 +1147,27 @@ p{font-size:15px;color:var(--ink-soft)}
   相談する
 </a>
 
+<!-- ========== Link modal (media / press links open in-page) ========== -->
+<div class="link-modal" id="linkModal" hidden>
+  <div class="lm-backdrop" data-lm-close></div>
+  <div class="lm-panel" role="dialog" aria-modal="true" aria-label="記事・動画">
+    <div class="lm-head">
+      <span class="lm-title"></span>
+      <div class="lm-actions">
+        <a class="lm-open" href="#" target="_blank" rel="noopener">
+          新しいタブで開く
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <button class="lm-close" type="button" aria-label="閉じる" data-lm-close>&times;</button>
+      </div>
+    </div>
+    <div class="lm-body">
+      <iframe class="lm-frame" src="" title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      <p class="lm-fallback">表示されない場合は「新しいタブで開く」をご利用ください。</p>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
   'use strict';
@@ -1167,6 +1231,44 @@ p{font-size:15px;color:var(--ink-soft)}
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       panel.style.maxHeight = open ? panel.scrollHeight + 'px' : '0px';
     });
+  });
+
+  /* ---- link modal: open media/press links & video in-page ---- */
+  var linkModal = document.getElementById('linkModal');
+  var lmFrame = linkModal.querySelector('.lm-frame');
+  var lmTitle = linkModal.querySelector('.lm-title');
+  var lmOpen = linkModal.querySelector('.lm-open');
+  var lastFocused = null;
+
+  function openLinkModal(link){
+    var embedUrl = link.dataset.embed || link.href;
+    var title = (link.querySelector('b') || {}).textContent || link.textContent.trim();
+    lmTitle.textContent = title;
+    lmOpen.href = link.href;
+    lmFrame.src = embedUrl;
+    lmFrame.title = title;
+    linkModal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    lastFocused = document.activeElement;
+    linkModal.querySelector('.lm-close').focus();
+  }
+  function closeLinkModal(){
+    linkModal.hidden = true;
+    lmFrame.src = 'about:blank';
+    document.body.style.overflow = '';
+    if(lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+  document.querySelectorAll('.media-card').forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      openLinkModal(link);
+    });
+  });
+  linkModal.querySelectorAll('[data-lm-close]').forEach(function(el){
+    el.addEventListener('click', closeLinkModal);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && !linkModal.hidden) closeLinkModal();
   });
 })();
 </script>
