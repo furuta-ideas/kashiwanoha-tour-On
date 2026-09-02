@@ -20,6 +20,7 @@
 <link rel="icon" href="assets/lp/logo-mark.png" type="image/png" />
 <link rel="apple-touch-icon" href="assets/lp/logo-mark.png" />
 
+<link rel="preload" as="image" href="assets/lp/hero-on.jpg" fetchpriority="high" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -29,15 +30,85 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      "@type": ["Organization", "LocalBusiness", "TouristInformationCenter"],
       "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#org",
       "name": "柏の葉スマートシティツアーズ",
-      "alternateName": "KASHIWA-NO-HA SMART CITY TOURS",
+      "alternateName": ["KASHIWA-NO-HA SMART CITY TOURS", "柏の葉スマートシティツアー ＋Onツアー"],
+      "description": "柏の葉スマートシティ（千葉県柏市・つくばエクスプレス柏の葉キャンパス駅エリア）の視察・見学ツアーを企画運営。住民ガイドによる街歩き、対話、AIワークショップ、デザイン思考を組み合わせ、企業研修・行政視察・大学のフィールドワーク・学校の総合学習に対応します。",
       "url": "https://furuta-ideas.github.io/kashiwanoha-tour-On/",
       "logo": "https://furuta-ideas.github.io/kashiwanoha-tour-On/assets/lp/logo-full.png",
+      "image": "https://furuta-ideas.github.io/kashiwanoha-tour-On/assets/lp/hero-on.jpg",
       "email": "furuta.ideas@gmail.com",
-      "areaServed": "柏の葉スマートシティ（千葉県柏市・柏の葉キャンパス駅エリア）",
-      "founder": { "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#furuta" }
+      "priceRange": "￥￥",
+      "knowsAbout": ["柏の葉スマートシティ", "スマートシティ視察", "まちづくり", "公民学連携", "オープンイノベーション", "デザイン思考", "AIワークショップ", "共創", "ウェルビーイング"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "JP",
+        "addressRegion": "千葉県",
+        "addressLocality": "柏市",
+        "streetAddress": "若柴（柏の葉キャンパス駅周辺）"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 35.8935, "longitude": 139.9524 },
+      "areaServed": [
+        { "@type": "Place", "name": "柏の葉スマートシティ（千葉県柏市・柏の葉キャンパス駅エリア）" },
+        { "@type": "Country", "name": "日本" }
+      ],
+      "founder": { "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#furuta" },
+      "employee": { "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#furuta" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#website",
+      "url": "https://furuta-ideas.github.io/kashiwanoha-tour-On/",
+      "name": "柏の葉スマートシティ ＋Onツアー｜柏の葉スマートシティツアーズ",
+      "inLanguage": "ja",
+      "publisher": { "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#org" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#webpage",
+      "url": "https://furuta-ideas.github.io/kashiwanoha-tour-On/",
+      "name": "柏の葉スマートシティ ＋Onツアー｜視察・見学・企業研修・AIワークショップ",
+      "description": "柏の葉スマートシティの視察・見学ツアー「＋Onツアー」。住民ガイド×対話×AIワークショップで、見学だけで終わらない学びの場をご提供します。",
+      "isPartOf": { "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#website" },
+      "about": { "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#place" },
+      "primaryImageOfPage": "https://furuta-ideas.github.io/kashiwanoha-tour-On/assets/lp/hero-on.jpg",
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "Place",
+      "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#place",
+      "name": "柏の葉スマートシティ",
+      "alternateName": ["柏の葉キャンパス", "Kashiwa-no-ha Smart City"],
+      "description": "千葉県柏市・つくばエクスプレス「柏の葉キャンパス」駅周辺で、公・民・学が連携して「環境共生都市」「健康長寿都市」「新産業創造都市」の3つのテーマに取り組むスマートシティ。UDCK（柏の葉アーバンデザインセンター）やKOIL（柏の葉オープンイノベーションラボ）を拠点に、自動運転バスやエネルギーマネジメントなどの実証実験が進み、国内外から視察・見学が訪れています。",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "JP",
+        "addressRegion": "千葉県",
+        "addressLocality": "柏市"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 35.8935, "longitude": 139.9524 }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://furuta-ideas.github.io/kashiwanoha-tour-On/" },
+        { "@type": "ListItem", "position": 2, "name": "柏の葉スマートシティとは", "item": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#smartcity" },
+        { "@type": "ListItem", "position": 3, "name": "＋Onツアーとは", "item": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#about" },
+        { "@type": "ListItem", "position": 4, "name": "ツアーの流れ", "item": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#flow" },
+        { "@type": "ListItem", "position": 5, "name": "よくあるご質問", "item": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#faq" }
+      ]
+    },
+    {
+      "@type": "VideoObject",
+      "name": "UDCKTM×Replayce 高校生実践型教育プログラム｜柏の葉スマートシティ",
+      "description": "柏の葉カンファレンスセンターで開催された、高校生が自ら「未来を創る」2日間の実践型教育プログラムの記録。柏の葉スマートシティでの共創の様子をご覧いただけます。",
+      "thumbnailUrl": "https://furuta-ideas.github.io/kashiwanoha-tour-On/assets/lp/media-video-mitsui.jpg",
+      "uploadDate": "2026-04-01",
+      "embedUrl": "https://www.youtube.com/embed/JBC97TSkr9c",
+      "contentUrl": "https://youtu.be/JBC97TSkr9c",
+      "publisher": { "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#org" }
     },
     {
       "@type": "Person",
@@ -65,7 +136,10 @@
       "name": "柏の葉スマートシティ ＋Onツアー",
       "description": "柏の葉スマートシティ（つくばエクスプレス柏の葉キャンパス駅エリア）を住民ガイドと歩き、UDCK・KOILなど公民学連携の共創拠点や実証実験の現場を見学。対話とAIワークショップ・デザイン思考で学びをアイデアに変えるセミカスタマイズ型の視察・研修プログラム。企業・研究機関・大学・行政機関・学校に対応。",
       "provider": { "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#org" },
-      "touristType": ["企業視察", "行政視察", "大学・研究機関", "学校の総合学習"],
+      "touristType": ["企業視察", "行政視察", "大学・研究機関", "学校の総合学習", "企業研修", "新規事業探索"],
+      "subjectOf": { "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#webpage" },
+      "arrivalLocation": { "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#place" },
+      "departureLocation": { "@id": "https://furuta-ideas.github.io/kashiwanoha-tour-On/#place" },
       "itinerary": {
         "@type": "ItemList",
         "itemListElement": [
@@ -423,6 +497,45 @@ p{font-size:15px;color:var(--ink-soft)}
 .opt-body p{font-size:12.5px;line-height:1.8}
 .opt-note{margin-top:18px;text-align:center;font-size:12px;color:var(--ink-soft)}
 
+/* ================= Smart city intro (SEO content) ================= */
+.sc{padding:clamp(56px,7vw,96px) 0}
+.sc-lead{max-width:820px;margin:0 auto clamp(30px,4vw,42px);text-align:center}
+.sc-lead p{line-height:2.05}
+.sc-lead p + p{margin-top:14px}
+.sc-themes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:clamp(28px,3.5vw,38px)}
+@media (max-width:900px){.sc-themes{grid-template-columns:1fr}}
+.sc-theme{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 22px;box-shadow:var(--shadow-sm);
+  transition:transform .25s,box-shadow .25s;
+}
+.sc-theme:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.sc-theme h3{
+  display:flex;align-items:center;gap:10px;
+  font-size:15px;font-weight:900;color:var(--green-900);margin-bottom:10px;letter-spacing:.03em;
+}
+.sc-theme h3 .ic{
+  width:36px;height:36px;flex:0 0 36px;border-radius:10px;
+  background:linear-gradient(135deg,rgba(200,169,93,.16),var(--green-050));
+  display:grid;place-items:center;color:var(--green-800);
+}
+.sc-theme h3 .ic svg{width:20px;height:20px}
+.sc-theme p{font-size:13px;line-height:1.85}
+.sc-spots{
+  background:var(--green-050);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(22px,3vw,30px);
+}
+.sc-spots h3{font-size:14px;font-weight:900;color:var(--green-900);margin-bottom:14px;letter-spacing:.04em}
+.sc-spot-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.sc-spot-list li{
+  background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+  font-size:12.5px;line-height:1.75;color:var(--ink-soft);
+}
+.sc-spot-list li b{display:block;font-size:13px;font-weight:900;color:var(--green-900);margin-bottom:4px}
+.sc-note{margin-top:16px;font-size:11.5px;color:var(--ink-soft);text-align:center}
+
+/* ================= Results / Media ================= */
+
 /* ================= Results / Media ================= */
 .results{padding:clamp(56px,7vw,96px) 0}
 .res-intro{max-width:640px;margin:0 auto clamp(32px,4vw,48px);text-align:center}
@@ -591,9 +704,19 @@ p{font-size:15px;color:var(--ink-soft)}
 }
 .footer-mail:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
 .footer-mail .en{font-family:'Outfit',sans-serif;font-size:11px;color:#c8a95d;letter-spacing:.1em}
+.footer-nav{
+  max-width:var(--wrap);margin:clamp(28px,4vw,38px) auto 0;padding:22px 22px 0;
+  border-top:1px solid rgba(255,255,255,.14);
+  display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;
+}
+.footer-nav a{
+  font-size:11.5px;color:#cfe3c8;letter-spacing:.04em;
+  border-bottom:1px solid transparent;transition:color .2s,border-color .2s;
+}
+.footer-nav a:hover{color:#fff;border-bottom-color:rgba(200,169,93,.7)}
 .footer-copy{
   text-align:center;font-size:11px;color:#9dbf93;
-  padding:26px 22px 22px;letter-spacing:.08em;
+  padding:22px 22px 22px;letter-spacing:.08em;
 }
 .footer-updated{opacity:.8;white-space:nowrap}
 
@@ -653,6 +776,8 @@ p{font-size:15px;color:var(--ink-soft)}
     </a>
   </div>
 </header>
+
+<main>
 
 <!-- ========== Hero ========== -->
 <section class="hero" id="top">
@@ -856,6 +981,47 @@ p{font-size:15px;color:var(--ink-soft)}
       </article>
     </div>
     <p class="opt-note">※ オプションの組み合わせ・所要時間・費用は、目的に合わせてご提案します。</p>
+  </div>
+</section>
+
+<!-- ========== Smart city intro (SEO content) ========== -->
+<section class="sc" id="smartcity">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">SMART CITY</span>
+      <h2 class="sec-title">柏の葉スマートシティとは</h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="sc-lead rv">
+      <p>柏の葉スマートシティは、千葉県柏市・つくばエクスプレス「柏の葉キャンパス」駅を中心に広がる、日本を代表するスマートシティのモデル地区です。秋葉原から電車で約30分という立地に、三井不動産・柏市・千葉大学・東京大学などが公民学連携で取り組むまちづくりが広がっています。</p>
+      <p>まちづくりの推進拠点であるUDCK（柏の葉アーバンデザインセンター）を軸に、「環境共生都市」「健康長寿都市」「新産業創造都市」という3つのテーマを掲げ、エネルギーマネジメントや自動運転バス、ウェルビーイングなど数多くの実証実験が街全体で進められています。国連の指標をはじめ国内外から高い評価を受け、企業・行政・大学の視察や見学が絶えないエリアです。</p>
+    </div>
+    <div class="sc-themes">
+      <article class="sc-theme rv">
+        <h3><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 4C11 4 6 9 6 18" stroke-linecap="round"/><path d="M20 4c0 10-6 16-14 16-1.7-7.5 3.5-15 14-16Z" stroke-linejoin="round"/></svg></span>環境共生都市</h3>
+        <p>太陽光発電や蓄電池、エリアエネルギーマネジメントシステム（AEMS）による街区をまたいだ電力の融通、脱炭素に向けた取り組み。平常時の省エネと、災害時の電力確保を両立するスマートグリッドが実装されています。</p>
+      </article>
+      <article class="sc-theme rv rv-d1">
+        <h3><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20.5S4 15.5 4 9.8A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 8 2.8c0 5.7-8 10.7-8 10.7Z" stroke-linejoin="round"/></svg></span>健康長寿都市</h3>
+        <p>「まちの健康研究所 あ・し・た」を拠点に、データを活用した健康づくりや多世代交流のプログラムを展開。大学・研究機関と連携した実証を通じ、住民のウェルビーイング向上に取り組んでいます。</p>
+      </article>
+      <article class="sc-theme rv rv-d2">
+        <h3><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2v6M12 16v6M2 12h6M16 12h6" stroke-linecap="round"/><circle cx="12" cy="12" r="3.4"/></svg></span>新産業創造都市</h3>
+        <p>KOIL（柏の葉オープンイノベーションラボ）を中心に、ベンチャー支援・オープンイノベーション・産学連携が進行。新規事業の共創やスタートアップの成長を後押しする仕組みが街に埋め込まれています。</p>
+      </article>
+    </div>
+    <div class="sc-spots rv rv-d1">
+      <h3>＋Onツアーで巡る主なスポット（目的に応じて選定）</h3>
+      <ul class="sc-spot-list">
+        <li><b>UDCK（柏の葉アーバンデザインセンター）</b>公民学連携でまちづくりを推進する拠点。街全体のコンセプトを理解する起点になります。</li>
+        <li><b>KOIL（柏の葉オープンイノベーションラボ）</b>新産業創造の中核。共創・スタートアップ支援の現場を体感できます。</li>
+        <li><b>ららぽーと柏の葉・ゲートスクエア</b>商業とオフィス、エネルギー設備が一体となった街の中心エリア。</li>
+        <li><b>アクアテラス</b>水辺の公園空間。憩いと防災・環境の機能を兼ね備えたパブリックスペースです。</li>
+        <li><b>柏の葉キャンパス駅周辺の街区</b>歩行者目線の空間デザインやモビリティの工夫を歩きながら確認します。</li>
+        <li><b>実証実験の現場</b>自動運転バスやセンシングなど、時期に応じた最新の取り組みをご案内します。</li>
+      </ul>
+      <p class="sc-note">※ 訪問先は視察の目的・人数・時期に合わせて調整します。施設の状況により見学できない場合があります。</p>
+    </div>
   </div>
 </section>
 
@@ -1129,6 +1295,8 @@ p{font-size:15px;color:var(--ink-soft)}
   </div>
 </section>
 
+</main>
+
 <!-- ========== Footer ========== -->
 <footer class="footer">
   <div class="footer-in">
@@ -1145,7 +1313,18 @@ p{font-size:15px;color:var(--ink-soft)}
       <span class="en">furuta.ideas@gmail.com</span>
     </a>
   </div>
-  <div class="footer-copy">&copy; 2026 柏の葉スマートシティツアーズ／KASHIWA-NO-HA SMART CITY TOURS <span class="footer-updated">最終更新：2026/07/05 09:17</span></div>
+  <nav class="footer-nav" aria-label="ページ内の目次">
+    <a href="#smartcity">柏の葉スマートシティとは</a>
+    <a href="#about">＋Onツアーとは（公式ツアーとの違い）</a>
+    <a href="#audience">スマートシティ視察におすすめの方</a>
+    <a href="#flow">視察ツアーの流れ</a>
+    <a href="#options">AIワークショップ・追加オプション</a>
+    <a href="#results">視察の実績・メディア掲載</a>
+    <a href="#profile">ガイド紹介（古田邦夫）</a>
+    <a href="#faq">よくあるご質問（料金・人数・所要時間）</a>
+    <a href="#contact">視察のお問い合わせ</a>
+  </nav>
+  <div class="footer-copy">&copy; 2026 柏の葉スマートシティツアーズ／KASHIWA-NO-HA SMART CITY TOURS <span class="footer-updated">最終更新：2026/09/02 19:51</span></div>
 </footer>
 
 <!-- floating contact button (mobile) -->
